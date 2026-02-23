@@ -13,5 +13,8 @@ class GeminiClient:
         self.model = genai.GenerativeModel("gemini-2.5-flash")
 
     def generate(self, prompt):
+    try:
         response = self.model.generate_content(prompt)
         return response.text
+    except Exception as e:
+        return "⚠️ API limit reached. Please wait a few seconds and try again."
